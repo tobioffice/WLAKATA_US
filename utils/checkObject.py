@@ -86,8 +86,12 @@ def detect_object_presence(background_img_path, current_img_path):
     return object_detected, output_display_img, diff_img, thresh_img_clean
 
 # --- Main Execution ---
-def idObjectPresent():
-
+def idObjectPresent() -> bool:
+    """
+    Checks if an object is present in the current image by comparing it to a background image.
+    Returns:
+        bool: True if an object is detected, False otherwise.
+    """
     if not os.path.exists(BACKGROUND_IMAGE_PATH):
         print(f"Creating a dummy background image at {BACKGROUND_IMAGE_PATH}")
         dummy_bg = np.zeros((400, 600, 3), dtype=np.uint8)

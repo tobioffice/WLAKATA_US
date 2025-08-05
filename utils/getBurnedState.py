@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import os
 
-def check_burned_state(image_path="images/pra_cropped.png"):
+def check_burned_state(image_path="images/pra_cropped.png") -> bool:
     """
     Check if the burned state is good
     

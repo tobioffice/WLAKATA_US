@@ -1,7 +1,7 @@
 [project]
 name = "wlakata-us"
 version = "0.1.0"
-description = "Add your description here"
+description = "An intelligent computer vision system for automated biscuit detection and quality assessment using OpenCV and Python."
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [

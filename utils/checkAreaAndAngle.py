@@ -24,7 +24,13 @@ def calculate_angle(p1, p2, p3):
 # --- Main script ---
 
 
-def isAreaAndAngleGood():
+def isAreaAndAngleGood() -> bool:
+    """
+    Checks if the area and angles of a binary image are within specified ranges.
+    Returns:
+        bool: True if both area and angles are within the specified ranges, False otherwise.
+    """
+
     # --- Define Evaluation Ranges ---
     MIN_AREA = 11100
     MAX_AREA = 11800

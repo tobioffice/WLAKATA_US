@@ -16,6 +16,10 @@ def main():
     serial_port = serial.Serial("/dev/ttyUSB0", 115200, timeout=1)
 
     while i<=tryNO:
+
+        print(f"\n--- Iteration {i} ---")
+        startTime = time.time()
+
         processImagesAndSave()
         objectDetected = idObjectPresent()
         if not objectDetected:
@@ -32,8 +36,8 @@ def main():
                     badFound = False
                                 
         badFound = pickBadAndPlace(badFound)
+        print(f"Iteration {i} completed in {time.time() - startTime:.2f} seconds.")
         i+=1
-        print(f"Attempt {i} completed. Bad found: {badFound}")
         time.sleep(1)
 
     serial_port.close()
