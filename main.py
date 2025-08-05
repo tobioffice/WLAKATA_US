@@ -10,7 +10,7 @@ import time
 
 def main():
 
-    tryNO=2
+    tryNO=20
     i=1
 
     serial_port = serial.Serial("/dev/ttyUSB0", 115200, timeout=1)
