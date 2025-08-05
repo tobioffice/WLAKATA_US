@@ -2,6 +2,14 @@
 
 An intelligent computer vision system for automated biscuit detection and quality assessment using OpenCV and Python. This system captures images of biscuits, detects their presence, analyzes their properties, and determines quality based on baking/burned state classification.
 
+## 🎥 Demonstration Video
+
+[![WLAKATA_US Demo](https://i.ytimg.com/vi/7D_TxVvmXgU/hqdefault.jpg)](https://youtu.be/7D_TxVvmXgU)
+
+**🎬 Watch the system in action**: [https://youtu.be/7D_TxVvmXgU](https://youtu.be/7D_TxVvmXgU)
+
+See real-time biscuit detection, quality assessment, and automated sorting in our comprehensive demonstration video!
+
 ## 🚀 Features
 
 - **Real-time Biscuit Detection**: Detects presence of biscuits using advanced computer vision techniques
