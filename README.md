@@ -1,13 +1,13 @@
-# WLAKATA_US - Automated Object Quality Control System
+# WLAKATA_US - Automated Biscuit Quality Control System
 
-An intelligent computer vision system for automated object detection and quality assessment using OpenCV and Python. This system captures images, detects objects, analyzes their properties, and determines quality based on burned state classification.
+An intelligent computer vision system for automated biscuit detection and quality assessment using OpenCV and Python. This system captures images of biscuits, detects their presence, analyzes their properties, and determines quality based on baking/burned state classification.
 
 ## 🚀 Features
 
-- **Real-time Object Detection**: Detects presence of objects using advanced computer vision techniques
-- **Quality Assessment**: Analyzes area, angle, and burned state of detected objects
-- **Multi-state Classification**: Classifies objects into 4 burned states (unBurned, underBurned, good, overBurned)
-- **Serial Communication**: Interfaces with hardware for automated processing
+- **Real-time Biscuit Detection**: Detects presence of biscuits using advanced computer vision techniques
+- **Quality Assessment**: Analyzes area, angle, and baking state of detected biscuits
+- **Multi-state Classification**: Classifies biscuits into 4 baking states (unBaked, underBaked, good, overBaked)
+- **Serial Communication**: Interfaces with hardware for automated biscuit processing
 - **Image Processing Pipeline**: Complete workflow from capture to quality decision
 
 ## 📁 Project Structure
@@ -16,21 +16,21 @@ An intelligent computer vision system for automated object detection and quality
 WLAKATA_US/
 ├── main.py                     # Main execution script
 ├── pyproject.toml             # Project dependencies
-├── rgbMap.json               # RGB reference values for burned states
+├── rgbMap.json               # RGB reference values for baking states
 ├── images/                   # Image storage directory
-│   ├── no_object.png         # Background reference image
-│   ├── pra*.png             # Sample/processed images
-│   └── burnedStates/        # Reference images for each burned state
-│       ├── good.png
-│       ├── overBurned.png
-│       ├── unBurned.png
-│       └── underBurned.png
+│   ├── no_object.png         # Background reference image (empty conveyor)
+│   ├── pra*.png             # Sample/processed biscuit images
+│   └── burnedStates/        # Reference images for each baking state
+│       ├── good.png         # Perfectly baked biscuits
+│       ├── overBurned.png   # Over-baked/burnt biscuits
+│       ├── unBurned.png     # Under-baked/raw biscuits
+│       └── underBurned.png  # Slightly under-baked biscuits
 └── utils/                   # Core utility modules
     ├── captureImages.py     # Image capture and preprocessing
-    ├── checkObject.py       # Object detection algorithms
-    ├── getBurnedState.py    # Burned state classification
+    ├── checkObject.py       # Biscuit detection algorithms
+    ├── getBurnedState.py    # Baking state classification
     ├── checkAreaAndAngle.py # Geometric property analysis
-    └── pickBadAndPlace.py   # Hardware control for object handling
+    └── pickBadAndPlace.py   # Hardware control for biscuit handling
 ```
 
 ## 🛠️ Installation
@@ -102,7 +102,7 @@ uv run utils/captureImages.py
 
 ### 2. Object Detection (`checkObject.py`)
 
-Uses multiple detection methods for robust object identification:
+Uses multiple detection methods for robust biscuit identification:
 
 - **Difference Detection**: Compares current image with background
 - **Edge Detection**: Uses Canny edge detection for dark objects
@@ -112,17 +112,17 @@ Uses multiple detection methods for robust object identification:
 **Key Parameters:**
 
 - `CHANGE_THRESHOLD = 20`: Sensitivity for difference detection
-- `MIN_OBJECT_AREA = 300`: Minimum area for valid object detection
+- `MIN_OBJECT_AREA = 300`: Minimum area for valid biscuit detection
 - `EDGE_THRESHOLD = 50`: Threshold for edge-based detection
 
-### 3. Burned State Classification (`getBurnedState.py`)
+### 3. Baking State Classification (`getBurnedState.py`)
 
-Classifies objects into four burned states based on RGB color analysis:
+Classifies biscuits into four baking states based on RGB color analysis:
 
-- **unBurned**: Light grayish colors `(R>125, G>125, B>120)`
-- **underBurned**: Yellow/bright tones `(high R,G, low B)`
-- **good**: Orange/brown tones `(R>G>B with specific ratios)`
-- **overBurned**: Dark colors `(R<90, G<90, B<90)`
+- **unBaked**: Light grayish colors `(R>125, G>125, B>120)` - Raw/unbaked dough
+- **underBaked**: Yellow/bright tones `(high R,G, low B)` - Slightly underbaked
+- **good**: Orange/brown tones `(R>G>B with specific ratios)` - Perfectly baked
+- **overBaked**: Dark colors `(R<90, G<90, B<90)` - Burnt/overbaked
 
 **RGB Reference Values** (from `rgbMap.json`):
 
@@ -172,14 +172,14 @@ while attempt <= max_attempts:
     pickBadAndPlace(badFound)        # Handle based on quality
 ```
 
-## 🎨 Burned State Examples
+## � Biscuit Baking State Examples
 
-| State              | Description            | RGB Characteristics        |
-| ------------------ | ---------------------- | -------------------------- |
-| **Good** ✅        | Perfect cooking state  | Orange/brown tones (R>G>B) |
-| **UnBurned** ⚪    | Undercooked, too light | Light grayish colors       |
-| **UnderBurned** 🟡 | Slightly undercooked   | Yellow/bright tones        |
-| **OverBurned** ⚫  | Overcooked, too dark   | Very dark colors           |
+| State             | Description          | RGB Characteristics        |
+| ----------------- | -------------------- | -------------------------- |
+| **Good** ✅       | Perfect baking state | Orange/brown tones (R>G>B) |
+| **UnBaked** ⚪    | Raw/unbaked dough    | Light grayish colors       |
+| **UnderBaked** 🟡 | Slightly underbaked  | Yellow/bright tones        |
+| **OverBaked** ⚫  | Burnt/overbaked      | Very dark colors           |
 
 ## ⚙️ Configuration
 
@@ -193,14 +193,14 @@ MIN_OBJECT_AREA = 300    # Minimum pixels for detection
 EDGE_THRESHOLD = 50      # Edge detection sensitivity
 ```
 
-### Customizing Burned State Classification
+### Customizing Baking State Classification
 
 Edit `utils/getBurnedState.py`:
 
 ```python
 # Adjust color range thresholds
-if r > 125 and g > 125 and b > 120:  # unBurned threshold
-    predicted_state = "unBurned"
+if r > 125 and g > 125 and b > 120:  # unBaked threshold
+    predicted_state = "unBaked"
 ```
 
 ### Hardware Configuration
@@ -217,17 +217,17 @@ tryNO = 20  # Maximum attempts per session
 ### Test All Components
 
 ```bash
-# Test object detection with different burned states
+# Test biscuit detection with different baking states
 python3 -c "
 import sys; sys.path.append('./utils')
 from checkObject import idObjectPresent
 print('Background:', idObjectPresent('images/no_object.png'))
 print('Good:', idObjectPresent('images/burnedStates/good.png'))
-print('Overburned:', idObjectPresent('images/burnedStates/overBurned.png'))
+print('Overbaked:', idObjectPresent('images/burnedStates/overBurned.png'))
 "
 ```
 
-### Test Burned State Classification
+### Test Baking State Classification
 
 ```bash
 # Test classification accuracy
@@ -251,9 +251,9 @@ uv run utils/getBurnedState.py
 3. **Object detection too sensitive**
 
    - Increase `CHANGE_THRESHOLD` in `checkObject.py`
-   - Increase `MIN_OBJECT_AREA` for larger objects only
+   - Increase `MIN_OBJECT_AREA` for larger biscuits only
 
-4. **Burned state misclassification**
+4. **Baking state misclassification**
    - Check lighting conditions
    - Adjust color thresholds in `getBurnedState.py`
    - Verify RGB reference values in `rgbMap.json`
@@ -262,8 +262,8 @@ uv run utils/getBurnedState.py
 
 The system provides detailed analysis output:
 
-- Object detection confidence
-- Color analysis scores for each burned state
+- Biscuit detection confidence
+- Color analysis scores for each baking state
 - Geometric property measurements
 - Processing time per image
 
@@ -272,7 +272,7 @@ The system provides detailed analysis output:
 1. Fork the repository
 2. Create a feature branch
 3. Make your changes
-4. Test thoroughly with various object types
+4. Test thoroughly with various biscuit types and baking states
 5. Submit a pull request
 
 ## 📄 License
