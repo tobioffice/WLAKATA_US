@@ -1,10 +1,10 @@
-# WLAKATA_US - Automated Biscuit Quality Control System
+# WLKATA_US - Automated Biscuit Quality Control System
 
 An intelligent computer vision system for automated biscuit detection and quality assessment using OpenCV and Python. This system captures images of biscuits, detects their presence, analyzes their properties, and determines quality based on baking/burned state classification.
 
 ## 🎥 Demonstration Video
 
-[![WLAKATA_US Demo](https://i.ytimg.com/vi/7D_TxVvmXgU/hqdefault.jpg)](https://youtu.be/7D_TxVvmXgU)
+[![WLKATA_US Demo](https://i.ytimg.com/vi/7D_TxVvmXgU/hqdefault.jpg)](https://youtu.be/7D_TxVvmXgU)
 
 **🎬 Watch the system in action**: [https://youtu.be/7D_TxVvmXgU](https://youtu.be/7D_TxVvmXgU)
 
@@ -21,7 +21,7 @@ See real-time biscuit detection, quality assessment, and automated sorting in ou
 ## 📁 Project Structure
 
 ```
-WLAKATA_US/
+WLKATA_US/
 ├── main.py                     # Main execution script
 ├── pyproject.toml             # Project dependencies
 ├── rgbMap.json               # RGB reference values for baking states
@@ -57,7 +57,7 @@ WLAKATA_US/
 
 ```bash
 git clone <repository-url>
-cd WLAKATA_US
+cd WLKATA_US
 ```
 
 2. Install dependencies using UV:
